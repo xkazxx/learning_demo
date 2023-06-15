@@ -32,7 +32,7 @@ public class CopyJarFileToSystemUtil {
 			ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 			Resource resource = resolver.getResource(path);
 			//创建新文件
-			makeFile(newPath);
+			FileUtils.makeFile(newPath);
 			FileCopyUtils.copy(resource.getInputStream(), new FileOutputStream(newPath));
 		} catch (IOException e) {
 			log.error("copyFileFromJar:", e);
@@ -60,7 +60,7 @@ public class CopyJarFileToSystemUtil {
 				}
 				String name = resourcePath.substring(resourcePath.lastIndexOf(tmp) + tmp.length());
 				String targetPath = newPath + name;
-				makeFile(targetPath);
+				FileUtils.makeFile(targetPath);
 
 				FileCopyUtils.copy(resource.getInputStream(), new FileOutputStream(targetPath));
 
@@ -72,58 +72,7 @@ public class CopyJarFileToSystemUtil {
 		}
 	}
 
-	/**
-	 * 创建文件
-	 *
-	 * @param path 全路径 指向文件
-	 */
-	public static void makeFile(String path) {
-		File file = new File(path);
-		if (file.exists()) {
-			return;
-		}
-		if (path.endsWith(File.separator)) {
-			makeDir(path);
-			return;
-		}
-		if (!file.getParentFile().exists()) {
-			makeDir(file.getParent());
-		}
-		try {
-			file.createNewFile();
-		} catch (IOException e) {
-			log.info("创建文件{}失败！{}", path, e.getMessage());
-		}
-	}
 
-	public static void makeDir(String path) {
-		File file = new File(path);
-		if (file.exists()) {
-			return;
-		}
-		if (file.isFile()) {
-			makeDir(path);
-			return;
-		}
-		if (!file.getParentFile().exists()) {
-			makeFile(file.getParent());
-		}
-		file.mkdir();
-	}
-
-	public static void delFiles(File target) {
-		if (target == null || !target.exists()) {
-			return;
-		}
-		if (target.isFile()) {
-			target.delete();
-			return;
-		}
-		File[] files = target.listFiles();
-		for (File file : files) {
-			delFiles(file);
-		}
-	}
 }
 
 

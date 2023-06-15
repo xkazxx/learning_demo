@@ -1,0 +1,11 @@
+# 服务端口
+server:
+  port: 9601
+  servlet:
+    context-path: bigfiletest
+
+xkazxx:
+  file:
+    upload:
+      tmp:
+        dir: E:\learning-project\learning_demo\big-file-upload\src\main\resources\tmpdir

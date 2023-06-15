@@ -1,5 +1,7 @@
-package com.xkazxx.fils;
+package com.xkazxx.fils.test;
 
+import com.xkazxx.fils.CopyJarFileToSystemUtil;
+import com.xkazxx.fils.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +25,7 @@ public class CopyJarFileToSystemUtilMain {
 			CopyJarFileToSystemUtil.copyFileFromJar(path, copytarget);
 			log.info("copyFileFromJar start {}", file.exists());
 		} finally {
-			CopyJarFileToSystemUtil.delFiles(file);
+			FileUtils.delFiles(file);
 		}
 
 	}
@@ -37,7 +39,7 @@ public class CopyJarFileToSystemUtilMain {
 			CopyJarFileToSystemUtil.dirCopyFileFromJar(dirPath, copytarget);
 			log.info("dirCopyFileFromJar start {}", file.listFiles().length);
 		} finally {
-			CopyJarFileToSystemUtil.delFiles(file);
+			FileUtils.delFiles(file);
 		}
 	}
 

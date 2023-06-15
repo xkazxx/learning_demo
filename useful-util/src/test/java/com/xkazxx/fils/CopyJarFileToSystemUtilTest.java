@@ -19,7 +19,7 @@ public class CopyJarFileToSystemUtilTest {
 			CopyJarFileToSystemUtil.copyFileFromJar(path, copytarget);
 			Assert.assertEquals(true, file.exists());
 		} finally {
-			CopyJarFileToSystemUtil.delFiles(file);
+			FileUtils.delFiles(file);
 		}
 
 	}
@@ -34,7 +34,7 @@ public class CopyJarFileToSystemUtilTest {
 			CopyJarFileToSystemUtil.dirCopyFileFromJar(dirPath, copytarget);
 			Assert.assertEquals(3, file.listFiles().length);
 		} finally {
-			CopyJarFileToSystemUtil.delFiles(file);
+			FileUtils.delFiles(file);
 		}
 	}
 
