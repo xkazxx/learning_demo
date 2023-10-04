@@ -1,4 +1,4 @@
-package com.xkazxx.fils;
+package com.xkazxx.fils.logutil;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -16,8 +16,9 @@ public class Log4jTestMain {
 	public static void main(String[] args) {
 //		DOMConfigurator.configure("log4j.xml");
 		DOMConfigurator.configure("useful-util/src/main/resources/log4j.xml");
-		Logger logger = Logger.getLogger("org.apache.log4j.xml");
+		Logger logger = Logger.getLogger(Log4jTestMain.class);
 
 		logger.info("++++++++++");
+		logger.error("hello");
 	}
 }

@@ -7,11 +7,11 @@
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%-5p %c{1} - %m%n" />
         </layout>
-        <filter class="org.apache.log4j.varia.LevelMatchFilter">
-            <param name="LevelToMatch" value="INFO" />
-            <param name="AcceptOnMatch" value="true" />
-        </filter>
-        <filter class="org.apache.log4j.varia.DenyAllFilter"/>
+<!--        <filter class="org.apache.log4j.varia.LevelMatchFilter">-->
+<!--            <param name="LevelToMatch" value="INFO" />-->
+<!--            <param name="AcceptOnMatch" value="false" />-->
+<!--        </filter>-->
+<!--        <filter class="org.apache.log4j.varia.DenyAllFilter"/>-->
     </appender>
 
     <appender name="file" class="org.apache.log4j.RollingFileAppender">
@@ -26,14 +26,14 @@
         </layout>
     </appender>
 
-    <logger name="com.journaldev.log4j" additivity="true">
-        <level value="DEBUG" />
-        <appender-ref ref="jdbc" />
-    </logger>
-
     <logger name="com.journaldev.log4j.model" additivity="true">
         <level value="DEBUG" />
         <appender-ref ref="file" />
+    </logger>
+
+     <logger name="com.xkazxx.fils.logutil.Log4jTestMain" additivity="false">
+        <level value="ERROR" />
+        <appender-ref ref="console" />
     </logger>
 
     <root>
